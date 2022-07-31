@@ -1,0 +1,32 @@
+<div id="calendar"></div>
+
+<script>
+fetch('./journals').then((data) => data.json()).then(journals => {
+    const eventSource = journals.map(({_id, title, date}) => ({
+        id: _id,
+        title,
+        start: date,
+    }))
+
+    calendar.addEventSource(eventSource)
+})
+
+const calendarEl = document.getElementById('calendar')
+const calendar = new FullCalendar.Calendar(calendarEl, {
+  initialView: 'dayGridMonth',
+  headerToolbar: {
+    left: 'prev,next today',
+    center: 'title',
+    right: 'dayGridMonth,timeGridWeek,listWeek'
+}, 
+
+});
+
+calendar.render();
+
+calendar.on('eventClick', (info) => {
+    window.location.replace(`./journal/${info.event.id}`)
+})
+</script>
+
+

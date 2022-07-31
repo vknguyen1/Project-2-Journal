@@ -1,0 +1,11 @@
+<%- include('../partials/head') %> <%- include('../partials/header') %>
+
+<h1><%=journalEntry.title%></h1>
+<p><%=journalEntry.entry%></p>
+
+<a class="button" href="/journal/<%=journalEntry._id%>/edit">Edit</a>
+<form action="/journal/<%= journalEntry._id %>?_method=DELETE" method="POST">
+  <input class="button" type="submit" value="DELETE" />
+</form>
+
+<%-include('../partials/footer') %>

@@ -1,0 +1,50 @@
+<%- include('../partials/head') %>
+<!-- Seperator -->
+<%- include('../partials/header') %>
+<h1>Create a New Journal Entry</h1>
+<form id="newEntryForm">
+  <label for="title">
+    Title
+    <input id="title" type="text" name="title" />
+  </label>
+  <label for="entry">
+    Entry
+    <textarea id="entry" name="entry" cols="30" rows="10"></textarea>
+  </label>
+  <label for="taskIsCompleted">
+    Is Task Complete?
+    <input id="taskIsCompleted" type="checkbox" name="taskIsCompleted" />
+  </label>
+  <button class="button" type="submit">Add</button>
+</form>
+    <script defer> 
+    // Get Elements
+      const taskIsCompletedEl = document.getElementById('taskIsCompleted')
+      const newEntryFormEl = document.getElementById('newEntryForm')
+      const titleEl = document.getElementById('title')
+      const entryEl = document.getElementById('entry')
+    
+      
+      // aggregate data 
+      newEntryFormEl.addEventListener('submit', (event) => {
+        event.preventDefault()
+        const urlParams = new URLSearchParams(window.location.search)
+        // '2022-07-28T00:00:00.000Z'
+        const [currentDate] = new Date().toISOString().split('T')
+        const data = {
+        title: titleEl.value,
+        entry: entryEl.value,
+        taskIsCompleted:  taskIsCompletedEl.checked,
+        date: urlParams.get('date') ?? currentDate
+      }
+      // fetch data then rerout back to homepage
+        fetch('./journal', {method:'POST', body:JSON.stringify(data), headers:{'Content-Type':'application/json'}})
+        .then(()=>{window.location.replace('./')})
+
+      })
+      
+    </script>
+
+
+<%- include('../partials/footer') %>
+
