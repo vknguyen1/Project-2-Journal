@@ -1,11 +1,17 @@
 <%- include('../partials/head') %> <%- include('../partials/header') %>
 
-<h1><%=journalEntry.title%></h1>
-<p><%=journalEntry.entry%></p>
+<div class="show-parent fireworks-container">
+  <!-- <div class="loading-init" -->
+<h1 class="show-page"><%=journalEntry.title%></h1>
+<p class="show-page"><%=journalEntry.entry%></p>
+<p class="show-page">task is completed? <%=journalEntry.taskIsCompleted%></p>
+<p class="show-page"><%=journalEntry.date%></p>
 
 <a class="button" href="/journal/<%=journalEntry._id%>/edit">Edit</a>
 <form action="/journal/<%= journalEntry._id %>?_method=DELETE" method="POST">
   <input class="button" type="submit" value="DELETE" />
 </form>
+</div>
+</div>
 
 <%-include('../partials/footer') %>

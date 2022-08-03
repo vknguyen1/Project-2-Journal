@@ -1,24 +1,25 @@
 <%- include('../partials/head') %> <%- include('../partials/header') %>
 
-<h1>Index Page</h1>
+<!-- <h1>Index Page</h1> -->
 
 <%- include('../partials/calendar') %>
 
-<a class="button" style="margin: 1rem" href="/journal/new"> Add a entry</a>
-
-  <% journalEntry.forEach(entry => { %>
-
-  <div>
-    <% console.log(entry) %>
-    <a href="/journal/<%= entry._id %>" <%="entry.title" %> </a>
-    <p><span>Entry: </span><%= entry.entry %></p>
-    <p><span>Task Completed: </span><%= entry.taskIsCompleted %></p>
-  </div>
+<div class="divB">
+  <h1 class="divB-Container">Tasks</h1>
+<% journalEntry.forEach(entry => { %>
+  <ul>
+  <a  href="/journal/<%= entry._id %>" <%="entry.title" %> </a>
+    <li><span>Title: </span><%= entry.title %></li>
+    <!-- <p><span>Entry: </span><%= entry.entry %></p>
+    <p><span>Task Completed: </span><%= entry.taskIsCompleted %></p> -->
+ </ul>
   <%})%>
-
+    
+  
+  <a style="margin: 1rem" href="/journal/new"> Add a entry</a>
+   </div>
   <script defer>
-
-      
+// 
   calendar.on('dateClick', (info) => {
     window.location.replace(`./new?date=${info.dateStr}`)
   })

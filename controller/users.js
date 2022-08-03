@@ -1,13 +1,13 @@
 const usersRouter = require('express').Router();
 const User = require('../models/user');
-const Log = require('../models/log');
+const Journal = require('../models/journal');
 
 const bcrypt = require('bcrypt');
 const SALT_ROUNDS = 10;
 
 // router middleware
 
-// login GET route - renders login page
+// login GET route
 usersRouter.get('/login', (req, res) => {
   res.render('./users/login.ejs', { err: '' });
 });
@@ -39,9 +39,9 @@ usersRouter.get('/signup', (req, res) => {
 
 // signup POST route - create a new user
 usersRouter.post('/signup', (req, res) => {
-  if (req.body.password.length < 8) {
+  if (req.body.password.length < 5) {
     return res.render('./users/signup.ejs', {
-      err: 'Password must be at least 8 characters long',
+      err: 'Password must be at least 5 characters long',
     });
   }
   const hash = bcrypt.hashSync(

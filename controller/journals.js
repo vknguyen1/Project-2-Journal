@@ -26,7 +26,6 @@ journalRouter.get('/', (req, res) => {
 
 journalRouter.get('/journals', (req, res) => {
   Journal.find({}, (err, journalEntry) => {
-    console.log('HERE: ', journalEntry);
     res.send(journalEntry);
   });
 });
@@ -51,12 +50,19 @@ journalRouter.delete('/journal/:id', (req, res) => {
 
 // update
 journalRouter.put('/journal/:id', (req, res) => {
+  if (req.body.taskIsCompleted === 'on') {
+    req.body.taskIsCompleted = true;
+  } else {
+    req.body.taskIsCompleted = false;
+  }
+  req.body.taskIsCompleted = !!req.body.taskIsCompleted;
   journal.findByIdAndUpdate(
     req.params.id,
     req.body,
     { new: true },
-    (error, updatedEntry) => {
+    (error, journalEntry) => {
       res.redirect(`/journal/${req.params.id}`);
+      console.log(req.body.taskIsCompleted);
     },
   );
 });
@@ -72,7 +78,8 @@ journalRouter.post('/journal', (req, res) => {
 // edit
 journalRouter.get('/journal/:id/edit', (req, res) => {
   Journal.findById(req.params.id, (err, entry) => {
-    res.render('journal/edit.ejs', { entry });
+    res.render('./journal/edit.ejs', { entry });
+    console.log(entry);
   });
 });
 

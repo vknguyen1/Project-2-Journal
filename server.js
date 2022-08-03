@@ -7,11 +7,14 @@ const morgan = require('morgan'); // morgan designed to read, not modify informa
 const methodOverride = require('method-override');
 const expressLayouts = require('express-ejs-layouts');
 const journalController = require('./controller/journals');
+const userController = require('./controller/users');
+const session = require('express-session');
+
 // initialize express
 const app = express();
 app.use(express.json());
 // Configure APP Settings
-const { PORT, MONGO_URL } = process.env;
+const { PORT, MONGO_URL, SECRET } = process.env;
 
 // connect database
 mongoose.connect(MONGO_URL);
@@ -34,6 +37,24 @@ app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.use(morgan('dev'));
 
+app.use(
+  session({
+    secret: SECRET,
+    resave: false,
+    saveUninitialized: false,
+  }),
+);
+
+app.use(async function (req, res, next) {
+  if (req.session && req.session.user) {
+    const user = await require('./models/user').findById(req.session.user);
+    res.locals.user = user;
+  } else {
+    res.locals.user = null;
+  }
+  next();
+});
+
 // Mount Route
 app.get('/', (req, res) => {
   res.redirect('/journal');
@@ -41,6 +62,7 @@ app.get('/', (req, res) => {
 
 // router middleware
 app.use('/journal', journalController);
+app.use('/users', userController);
 
 app.use('/', journalsRouter);
 app.set('view engine', 'ejs');

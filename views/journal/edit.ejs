@@ -2,26 +2,52 @@
 <!-- Seperator -->
 <%- include('../partials/header') %>
 
-<div><a class="backbutton" href="/journal/<%=entry.id%>">Go Back</a>"</div>
+entry = {title: 1, date: 2, entry:'abc', isTaskCompleted: true}
+
+
 <div>
-    <form action="/journal/<%= entry._id %>?_method=PUT"method="POST"class="box">
-<h1>Edit Entry</h1>
-<label for="Title">Title: 
-<input type="text" name="title" value="<%=entry.title%>"/>
-</label>
-<label for="Entry">Entry: 
-<textarea name="entry" id="" cols="30" rows="10"><%=entry.entry%></textarea>
-</label>
-<label for="taskIsCompleted">is Task Complete? 
-<input type="checkbox" name="taskIsCompleted" 
-<% if(entry.taskIsCompleted){ %> checked <% } %>>
-</label>
+    <!-- <div>
+        <a class="backbutton" href="/journal/<%=entry.id%>">Go Back</a>
+    </div> -->
+<form action="/journal/<%= entry._id %>?_method=PUT" method="POST">
+    <h1>Edit Entry</h1>
+        <label for="Title">Title: 
+            <input type="text" name="title" value="<%=entry.title%>"/>
+        </label>
+        <label for="Title">Date: 
+            <input type="text" name="date" value="<%=entry.date%>"/>
+        </label>
+        <label for="Entry">Entry: 
+            <textarea name="entry" id="" cols="30" rows="10"><%=entry.entry%></textarea>
+        </label>
+        <label for="taskIsCompleted">is Task Complete? 
+            <input id="taskIsCompleted" type="checkbox" name="taskIsCompleted" 
+            <% if(entry.taskIsCompleted){ console.log('1v1', entry.taskIsCompleted) %> checked <% } %>> 
+             
+          
+               
+               
+         <!-- <script>
+        const taskIsCompletedEl = document.getElementById('taskIsCompleted')
+        
+        taskIsCompletedEl.addEventListener('click', (e)=> {
+            
+            if(taskIsCompletedEl.checked) {
+                taskIsCompletedEl.value = true
+               console.log(taskIsCompletedEl.value)
+            } else {
+                taskIsCompletedEl.value = false
+                console.log(taskIsCompletedEl.value)
+                
+            
+            }
+        })
+        </script> -->
 
+        </label>
 <button class="button" type="submit">Save</button>
-
-
 </form>
 </div>
-</div>
+
 <!-- Seperator -->
 <%- include('../partials/footer') %>

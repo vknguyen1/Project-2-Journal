@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fireworks-js/web": "^2.0.0",
     "@fullcalendar/core": "^5.11.2",
     "@fullcalendar/daygrid": "^5.11.2",
     "@fullcalendar/list": "^5.11.2",
@@ -20,6 +21,7 @@
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
     "method-override": "^3.0.0",
     "mongoose": "^6.4.6",
     "morgan": "^1.10.0",
