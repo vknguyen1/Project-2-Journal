@@ -18,8 +18,8 @@ User should be able to view on the calender which tasks they have
 
 # Screenshot
 
-[img](./IMG/Screen%20Shot%202022-08-03%20at%206.28.37%20PM.png)
-[img](./IMG/Screen%20Shot%202022-08-03%20at%208.28.31%20PM.png)
+![img](./IMG/Screen%20Shot%202022-08-03%20at%206.28.37%20PM.png)
+![img](./IMG/Screen%20Shot%202022-08-03%20at%208.28.31%20PM.png)
 
 # Getting Started
 
