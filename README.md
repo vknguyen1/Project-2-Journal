@@ -3,7 +3,7 @@
 # User Stories
 
 User should be able to add, edit, remove, delete journal entries.
-User should be able to
+User should be able to view on the calender which tasks they have
 
 # Technologies Used
 

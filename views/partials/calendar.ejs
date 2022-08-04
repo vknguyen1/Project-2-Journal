@@ -28,7 +28,7 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
 
 calendar.render();
 
-calendar.on('dblclick', (info) => {
+calendar.on('eventClick', (info) => {
     window.location.replace(`./journal/${info.event.id}`)
 })
 </script>
