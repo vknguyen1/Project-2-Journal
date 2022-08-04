@@ -7,6 +7,9 @@
     Title
     <input id="title" type="text" name="title" />
   </label>
+  <label for="date">Date: 
+            <input id="date" type="text" name="date" placeholder="YYYY-MM-DD"/>
+        </label>
   <label for="entry">
     Entry
     <textarea id="entry" name="entry" cols="30" rows="10"></textarea>
@@ -23,6 +26,7 @@
       const newEntryFormEl = document.getElementById('newEntryForm')
       const titleEl = document.getElementById('title')
       const entryEl = document.getElementById('entry')
+      const dateEl = document.getElementById('date')
     
       
       // aggregate data 

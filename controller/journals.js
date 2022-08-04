@@ -71,6 +71,7 @@ journalRouter.put('/journal/:id', (req, res) => {
 journalRouter.post('/journal', (req, res) => {
   console.log(req.body);
   Journal.create(req.body, (err, newEntry) => {
+    console.log('here', newEntry);
     res.redirect('/journal');
   });
 });

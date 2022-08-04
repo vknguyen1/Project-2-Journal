@@ -1,22 +1,21 @@
-.divA {
-  border: 3px solid black;
-  /* position: absolute; */
-  margin: 100px 100px 100px 25px;
-  background-color: white;
-}
-
 body {
   background-size: 1080px 840px;
   background-repeat: no-repeat;
   background-position: center;
   /* background: black; */
   background-attachment: fixed;
-  background-image: url('https://images.pexels.com/photos/2531237/pexels-photo-2531237.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+  background-image: url('https://www.itl.cat/pngfile/big/196-1961682_sweet-treats-wallpaper-background-iphone-android-cute-pastel.jpg');
+}
+.divA {
+  border: 3px solid black;
+  /* position: absolute; */
+  margin: 100px 100px 100px 100px;
+  background-color: white;
 }
 
 .divB {
   border: 3px solid black;
-  margin: -500px 1000px 500px 1000px;
+  margin: -700px 700px 500px 900px;
   height: 100%;
   width: 25%;
   display: flex;

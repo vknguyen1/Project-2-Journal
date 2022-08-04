@@ -6,17 +6,17 @@
 
 <div class="divB">
   <h1 class="divB-Container">Tasks</h1>
-<% journalEntry.forEach(entry => { %>
+    <% journalEntry.forEach(entry => { %>
   <ul>
   <a  href="/journal/<%= entry._id %>" <%="entry.title" %> </a>
-    <li><span>Title: </span><%= entry.title %></li>
+    <li><span></span><%= entry.title %></li>
     <!-- <p><span>Entry: </span><%= entry.entry %></p>
     <p><span>Task Completed: </span><%= entry.taskIsCompleted %></p> -->
  </ul>
   <%})%>
     
   
-  <a style="margin: 1rem" href="/journal/new"> Add a entry</a>
+  <a style class="divB-Container" href="/journal/new"> Add a entry</a>
    </div>
   <script defer>
 // 
