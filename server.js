@@ -14,10 +14,10 @@ const session = require('express-session');
 const app = express();
 app.use(express.json());
 // Configure APP Settings
-const { PORT, MONGO_URL, SECRET } = process.env;
+const { PORT, DATABASE_URL, SECRET } = process.env;
 
 // connect database
-mongoose.connect(MONGO_URL);
+mongoose.connect(DATABASE_URL);
 const db = mongoose.connection;
 db.on('error', (error) => {
   console.error(error.message + 'mongoDB error!');
